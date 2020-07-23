@@ -13,7 +13,7 @@ jobs:
       - name: Build and publish to GitHub Packages
         uses: docker/build-push-action@v1
         with:
-          repository: sergii-shkolin/octodns
+          repository: sergii-shkolin/octodns/octodns
           registry: docker.pkg.github.com
           username: sergii-shkolin
           password: ${{ secrets.GH_TOKEN }}
