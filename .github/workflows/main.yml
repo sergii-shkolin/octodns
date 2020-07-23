@@ -1,0 +1,22 @@
+name: OctoDNS docker build
+on: [push]
+
+jobs:
+  build:
+    name: Clone, Publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone
+        uses: actions/checkout@v2
+
+      - name: Build and publish to GitHub Packages
+        uses: docker/build-push-action@v1
+        with:
+          repository: sergii-shkolin/octodns
+          registry: docker.pkg.github.com
+          username: sergii-shkolin
+          password: ${{ secrets.GH_TOKEN }}
+          tags: latest
+          tag_with_ref: true
+          push: ${{ startsWith(github.ref, 'refs/tags/') }}
